@@ -7,15 +7,11 @@ export default function MovieTracker() {
         { id: 3, title: '듄', genre: 'SF', rating: 5, watched: false },
     ]);
 
-    // [추가 1] 영화 삭제 함수
     const handleDelete = (id) => {
-        // filter를 사용해 클릭한 id와 다른 항목만 남긴 새 배열을 만듭니다.
         setMovies(movies.filter((movie) => movie.id !== id));
     };
 
-    // [추가 2] 감상 완료 체크박스 토글 함수
     const handleToggleWatched = (id) => {
-        // map을 사용해 클릭한 id의 watched 값만 반대로(true <-> false) 바꿔줍니다.
         setMovies(
             movies.map((movie) =>
                 movie.id === id ? { ...movie, watched: !movie.watched } : movie
@@ -23,9 +19,21 @@ export default function MovieTracker() {
         );
     };
 
+    // [추가 1] 별점 숫자를 받아 '★'과 '☆' 문자로 바꿔주는 함수
+    const renderStars = (rating) => {
+        return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    };
+
+    // [추가 2] 전체 영화 수와 감상 완료된 영화 수 계산
+    const totalCount = movies.length;
+    const watchedCount = movies.filter((m) => m.watched).length;
+
     return (
         <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
             <h1>나의 영화 기록장</h1>
+
+            {/* [추가 3] 상단 요약 카운터 출력 */}
+            <h3>전체 {totalCount}편 / 감상 완료 {watchedCount}편</h3>
 
             <div style={{ display: 'flex', gap: '16px' }}>
                 {movies.map((movie) => (
@@ -43,9 +51,10 @@ export default function MovieTracker() {
                     >
                         <h3 style={{ margin: 0 }}>{movie.title}</h3>
                         <div>장르: {movie.genre}</div>
-                        <div>별점: {movie.rating}점</div>
 
-                        {/* [추가 3] 감상 완료 체크박스 */}
+                        {/* [수정 4] 별점 표기를 숫자가 아닌 별 모양으로 변경 */}
+                        <div style={{ fontSize: '16px' }}>{renderStars(movie.rating)}</div>
+
                         <label style={{ cursor: 'pointer' }}>
                             <input
                                 type="checkbox"
@@ -55,7 +64,6 @@ export default function MovieTracker() {
                             감상 완료
                         </label>
 
-                        {/* [추가 4] 삭제 버튼 */}
                         <div>
                             <button onClick={() => handleDelete(movie.id)}>삭제</button>
                         </div>
