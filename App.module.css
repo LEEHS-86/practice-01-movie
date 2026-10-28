@@ -2,28 +2,28 @@
     max-width: 800px;
     margin: 40px auto;
     padding: 24px;
-    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    color: #333;
+    font-family: sans-serif;
+    color: #8f56bd;
 }
 
 .container h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #111;
+    color: #e5534b;
 }
 
 .fieldset {
-    border: 1px solid #e1e4e8;
+    border: 1px solid #036bf5;
     border-radius: 8px;
     padding: 16px;
-    background-color: #f6f8fa;
+    background-color: #fafafa;
     margin-bottom: 24px;
 }
 
 .legend {
     font-weight: bold;
     font-size: 14px;
-    color: #586069;
+    color: #c46161;
     padding: 0 4px;
 }
 
@@ -45,13 +45,13 @@
 
 .form input:focus,
 .form select:focus {
-    border-color: #0366d6;
+    border-color: #e08f4b;
     box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.1);
 }
 
 .form button {
     padding: 6px 14px;
-    background-color: #2ea44f;
+    background-color: #0cde3d;
     color: white;
     border: none;
     border-radius: 4px;
@@ -65,8 +65,10 @@
 
 .movieList {
     display: flex;
-    gap: 16px;
+    gap: 5px;
+    justify-content: space-between;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .movieCard {
@@ -91,8 +93,8 @@
     background-color: #fa7970;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
+    border-radius: 5px;
+    padding: 5px 50px;
     cursor: pointer;
     font-size: 12px;
 }
